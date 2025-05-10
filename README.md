@@ -36,3 +36,4 @@ Análise do mercado imobiliário global com foco em tendências de preços, aces
 ```bash
 git clone [seu-repositorio]
 pip install pandas matplotlib numpy scipy seaborn
+ -- run AED - Mercado Imobiliario.ipynb
