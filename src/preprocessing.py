@@ -142,4 +142,4 @@ class Preprocess():
         return reason_price_income.sort_values('Value', ascending=True)
     
     def get_df_buy_vs_rent(self) -> pd.DataFrame:
-        return pd.merge(self.__get_df_buy(), self.__get_df_rent(), left_index=True, right_index=True, suffixes=('_buy', '_rent'))
+        return pd.merge(self.__get_df_buy(), self.__get_df_rent(), left_index=True, right_index=True, suffixes=('_compra', '_aluguel'))

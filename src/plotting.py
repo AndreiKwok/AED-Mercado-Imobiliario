@@ -110,8 +110,8 @@ class Plotting():
                     color=plt.cm.Blues(np.linspace(0.3, 1, len(reason_price_income))))
 
         # Ajustes estéticos
-        plt.title('Razão Preço-Renda por País', fontsize=14, pad=20, fontweight='semibold')
-        plt.xlabel('Razão (Preço da Casa/Renda Anual)', fontsize=12)
+        plt.title('Razão Preço-Acessibilidade por País', fontsize=14, pad=20, fontweight='semibold')
+        plt.xlabel('Razão (Preço da Casa/Acessibilidade Anual)', fontsize=12)
         plt.ylabel('')
         plt.xlim(0, 18)
 
@@ -129,8 +129,8 @@ class Plotting():
                     color='#2d3436', fontsize=10)
 
         # Linha de referência para limite de acessibilidade
-        plt.axvline(x=12, color='#e74c3c', linestyle='--', alpha=0.7, lw=1)
-        plt.text(12.2, 2, 'Limite de Acessibilidade', color='#e74c3c', va='center')
+        # plt.axvline(x=12, color='#e74c3c', linestyle='--', alpha=0.7, lw=1)
+        # plt.text(12.2, 2, 'Limite de Acessibilidade', color='#e74c3c', va='center')
 
         plt.tight_layout()
         plt.show()        
@@ -143,19 +143,19 @@ class Plotting():
         positions = range(len(countries))
 
         # Plotar barras
-        plt.bar(positions, df_combined['Value_buy'], width=bar_width, label='BUY (Price/Income)', color='#3498db')
-        plt.bar([p + bar_width for p in positions], df_combined['Value_rent'], width=bar_width, label='RENT (Rent/Income)', color='#e74c3c')
+        plt.bar(positions, df_combined['Value_compra'], width=bar_width, label='COMPRA (Price/Income)', color='#3498db')
+        plt.bar([p + bar_width for p in positions], df_combined['Value_aluguel'], width=bar_width, label='ALUGUEL (Rent/Income)', color='#e74c3c')
 
         # Ajustar eixos e legendas
         plt.title('Comparação de Acessibilidade: Compra vs. Aluguel por País', fontsize=14)
         plt.xlabel('País', fontsize=12)
-        plt.ylabel('Razão (Income Normalizado)', fontsize=12)
+        plt.ylabel('Razão (Acessibilidade Normalizado)', fontsize=12)
         plt.xticks([p + bar_width/2 for p in positions], countries, rotation=45, ha='right')
         plt.legend()
         plt.grid(axis='y', linestyle='--', alpha=0.7)
-        for i, v in enumerate(df_combined['Value_buy']):
+        for i, v in enumerate(df_combined['Value_compra']):
             plt.text(i - 0.1, v + 0.2, f'{v:.1f}', color='black')
-        for i, v in enumerate(df_combined['Value_rent']):
+        for i, v in enumerate(df_combined['Value_aluguel']):
             plt.text(i - 0, v + 0.2, f'{v:.1f}', color='black')
         # Ajustar layout
         plt.tight_layout()
